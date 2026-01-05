@@ -15,4 +15,4 @@ It demonstrates HTML structure, CSS styling, and basic navigation.
 - 📈 Excel File: [https://docs.google.com/spreadsheets/d/1ypYJheBPiwN_SrMLa6uoDzFsAlJMLjnn/edit?usp=drive_link&ouid=114850428107993591269&rtpof=true&sd=true]
 
 ## Live Website
-🔗 https://10zainabamir.github.io/Group9-Culinary-Arts-Academy/
+🔗 https://khanusaid9900.github.io/Group9-Culinary-Arts-Academy/
