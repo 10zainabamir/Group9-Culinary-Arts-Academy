@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Culinary Arts Academy - Professional Cooking Classes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #e74c3c;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23e74c3c" width="1200" height="600"/><circle fill="%23c0392b" cx="200" cy="150" r="100" opacity="0.3"/><circle fill="%23c0392b" cx="800" cy="400" r="150" opacity="0.3"/><circle fill="%23c0392b" cx="1000" cy="200" r="80" opacity="0.3"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 8rem 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s, background 0.3s;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+        }
+
+        .cta-button:hover {
+            background: #c0392b;
+            transform: translateY(-3px);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            color: #e74c3c;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .about-image {
+            height: 400px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            border-top: 4px solid #e74c3c;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            background: #e74c3c;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: #555;
+        }
+
+        /* Classes Schedule */
+        .classes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .class-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .class-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .class-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .class-card:nth-child(1) .class-image {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .class-card:nth-child(2) .class-image {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .class-card:nth-child(3) .class-image {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .class-card:nth-child(4) .class-image {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .class-card:nth-child(5) .class-image {
+            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+        }
+
+        .class-card:nth-child(6) .class-image {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+
+        .class-info {
+            padding: 1.5rem;
+        }
+
+        .class-info h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .class-meta {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .class-meta span {
+            background: #ecf0f1;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .class-price {
+            color: #e74c3c;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            height: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .gallery-item:nth-child(1) .gallery-placeholder {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .gallery-item:nth-child(2) .gallery-placeholder {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .gallery-item:nth-child(3) .gallery-placeholder {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .gallery-item:nth-child(4) .gallery-placeholder {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .gallery-item:nth-child(5) .gallery-placeholder {
+            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+        }
+
+        .gallery-item:nth-child(6) .gallery-placeholder {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ecf0f1;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #e74c3c;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-button {
+            background: #e74c3c;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            width: 100%;
+        }
+
+        .submit-button:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        .contact-info {
+            background: #2c3e50;
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .contact-info h3 {
+            color: #e74c3c;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-item {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .info-icon {
+            background: #e74c3c;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .info-item p {
+            margin: 0;
+        }
+
+        .info-item strong {
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Background Sections */
+        #about {
+            background: #ecf0f1;
+        }
+
+        #gallery {
+            background: #f8f9fa;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                gap: 1rem;
+                justify-content: center;
+            }
+
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        .img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="header-container">
+            <div class="logo">🍳 Culinary Arts Academy</div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#classes">Classes</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>Master the Art of Cooking</h1>
+        <p>Join our professional cooking classes and unleash your culinary potential</p>
+        <a href="#contact" class="cta-button">Enroll Now</a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <p class="section-subtitle">Where passion meets culinary excellence</p>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Welcome to Culinary Arts Academy</h3>
+                    <p>At Culinary Arts Academy, we believe that cooking is more than just preparing food—it's an art form that brings people together. With over 15 years of experience in culinary education, we've helped thousands of students discover their passion for cooking.</p>
+                    
+                    <p>Our state-of-the-art kitchen facilities and expert instructors provide the perfect environment for learning. Whether you're a complete beginner or looking to refine your skills, we offer classes tailored to every level.</p>
+                    
+                    <p>Join our community of food enthusiasts and embark on a delicious journey of culinary discovery. From basic knife skills to advanced pastry techniques, we cover it all with hands-on instruction and personalized guidance.</p>
+                </div>
+                <div class="about-image">
+                    <p><img src="food.jpg" height="400" width="600"></p>
+                </div>
+            </div>
+           <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><img src="cook.jpg" height="60" width="100"></div>
+                    <h3>Expert Instructors</h3>
+                    <p>Learn from professional chefs with years of industry experience and a passion for teaching.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><img src="culinary.jpg" height="60" width="100"></div>
+                    <h3>Hands-On Learning</h3>
+                    <p>Practice makes perfect. Get hands-on experience with every technique and recipe.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><img src="spice.jpg" height="60" width="100"></div>
+                    <h3>Small Class Sizes</h3>
+                    <p>Maximum 12 students per class ensures personalized attention and guidance.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><img src="win.png" height="60" width="100"></div>
+                    <h3>Certification Programs</h3>
+                    <p>Complete our courses and receive recognized culinary certifications.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Classes Section -->
+    <section id="classes">
+        <div class="container">
+            <h2 class="section-title">Our Classes</h2>
+            <p class="section-subtitle">Explore our diverse range of culinary courses</p>
+            
+            <div class="classes-grid">
+                <article class="class-card">
+                    <div class="class-image">
+                        <p><img src="junk.jpg" height="200" width="400"></p>
+                    </div>
+                    <div class="class-info">
+                        <h3>Beginner Cooking Basics</h3>
+                        <p>Master fundamental cooking techniques, knife skills, and essential recipes. Perfect for those starting their culinary journey.</p>
+                        <div class="class-meta">
+                            <span>⏰ 6 weeks</span>
+                            <span>📅 Mon & Wed</span>
+                            <span>🕐 6:00 PM</span>
+                        </div>
+                        <div class="class-price">$299</div>
+                    </div>
+                </article>
+
+                <article class="class-card">
+                    <div class="class-image">
+                        <p><img src="italian.jpg" height="200" width="400"></p>
+                    </div>
+                    <div class="class-info">
+                        <h3>Italian Cuisine Mastery</h3>
+                        <p>Learn to create authentic Italian dishes from scratch, including fresh pasta, risotto, and classic sauces.</p>
+                        <div class="class-meta">
+                            <span>⏰ 4 weeks</span>
+                            <span>📅 Tuesday</span>
+                            <span>🕐 7:00 PM</span>
+                        </div>
+                        <div class="class-price">$249</div>
+                    </div>
+                </article>
+
+                <article class="class-card">
+                    <div class="class-image">
+                        <p><img src="pastry.jpg" height="200" width="400"></p>
+                    </div>
+                    <div class="class-info">
+                        <h3>Baking & Pastry Arts</h3>
+                        <p>Discover the art of baking with courses in breads, pastries, cakes, and desserts using professional techniques.</p>
+                        <div class="class-meta">
+                            <span>⏰ 8 weeks</span>
+                            <span>📅 Thursday</span>
+                            <span>🕐 5:30 PM</span>
+                        </div>
+                        <div class="class-price">$349</div>
+                    </div>
+                </article>
+
+                <article class="class-card">
+                    <div class="class-image">
+                        <p><img src="japnese.jpg" height="200" width="400"></p>
+                    </div>
+                    <div class="class-info">
+                        <h3>Asian Cuisine Workshop</h3>
+                        <p>Explore the flavors of Asia with classes covering Chinese, Japanese, Thai, and Vietnamese cuisines.</p>
+                        <div class="class-meta">
+                            <span>⏰ 5 weeks</span>
+                            <span>📅 Saturday</span>
+                            <span>🕐 2:00 PM</span>
+                        </div>
+                        <div class="class-price">$279</div>
+                    </div>
+                </article>
+
+                <article class="class-card">
+                    <div class="class-image">
+                        <p><img src="nutrio.jpg" height="200" width="400"></p>
+                    </div>
+                    <div class="class-info">
+                        <h3>Healthy Cooking</h3>
+                        <p>Learn to prepare nutritious, delicious meals that support a healthy lifestyle without sacrificing flavor.</p>
+                        <div class="class-meta">
+                            <span>⏰ 4 weeks</span>
+                            <span>📅 Friday</span>
+                            <span>🕐 6:30 PM</span>
+                        </div>
+                        <div class="class-price">$229</div>
+                    </div>
+                </article>
+
+                <article class="class-card">
+                    <div class="class-image">
+                        <p><img src="cake.jpg" height="200" width="400"></p>
+                    </div>
+                    <div class="class-info">
+                        <h3>Professional Chef Training</h3>
+                        <p>Comprehensive program covering advanced techniques, menu planning, and kitchen management for aspiring chefs.</p>
+                        <div class="class-meta">
+                            <span>⏰ 12 weeks</span>
+                            <span>📅 Weekdays</span>
+                            <span>🕐 9:00 AM</span>
+                        </div>
+                        <div class="class-price">$899</div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <div class="container">
+            <h2 class="section-title">Gallery</h2>
+            <p class="section-subtitle">Take a peek into our culinary world</p>
+            
+            <div class="gallery-grid">
+                <figure class="gallery-item">
+                    <div class="gallery-placeholder"><img src="pasta2.jpg" height="400" width="500"></div>
+                    <figcaption class="gallery-caption">Students learning traditional pasta techniques</figcaption>
+                </figure>
+                
+                <figure class="gallery-item">
+                    <div class="gallery-placeholder"><img src="kitchen.jpg" height="200" width="400"></div>
+                    <figcaption class="gallery-caption">State-of-the-art cooking stations</figcaption>
+                </figure>
+                
+                <figure class="gallery-item">
+                    <div class="gallery-placeholder"><img src="pastry2.jpg" height="200" width="400"></div>
+                    <figcaption class="gallery-caption">Advanced cake decorating class</figcaption>
+                </figure>
+                
+                <figure class="gallery-item">
+                    <div class="gallery-placeholder"><img src="Asian_Cuisine.webp" height="200" width="400"></div>
+                    <figcaption class="gallery-caption">Learning authentic sushi preparation</figcaption>
+                </figure>
+                
+                <figure class="gallery-item">
+                    <div class="gallery-placeholder"><img src="italian2.jpg" height="200" width="400"></div>
+                    <figcaption class="gallery-caption">Creating authentic Italian dishes</figcaption>
+                </figure>
+                
+                <figure class="gallery-item">
+                    <div class="gallery-placeholder"><img src="graduation.jpg" height="200" width="400"></div>
+                    <figcaption class="gallery-caption">Celebrating our certified graduates</figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <p class="section-subtitle">Ready to start your culinary journey? Get in touch!</p>
+            
+            <div class="contact-container">
+                <form class="contact-form" action="#" method="post">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="class">Interested Class</label>
+                        <select id="class" name="class">
+                            <option value="">Select a class...</option>
+                            <option value="beginner">Beginner Cooking Basics</option>
+                            <option value="italian">Italian Cuisine Mastery</option>
+                            <option value="baking">Baking & Pastry Arts</option>
+                            <option value="asian">Asian Cuisine Workshop</option>
+                            <option value="healthy">Healthy Cooking</option>
+                            <option value="professional">Professional Chef Training</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-button">Send Message</button>
+                </form>
+                
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">📍</div>
+                        <div>
+                            <strong>Visit Us</strong>
+                            <p>456 Culinary Avenue<br>Foodie District, NY 10001</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">📞</div>
+                        <div>
+                            <strong>Call Us</strong>
+                            <p>Main: (555) 123-4567<br>Admissions: (555) 123-4568</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">✉️</div>
+                        <div>
+                            <strong>Email Us</strong>
+                            <p>info@culinaryarts.edu<br>admissions@culinaryarts.edu</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">⏰</div>
+                        <div>
+                            <strong>Office Hours</strong>
+                            <p>Monday - Friday: 9:00 AM - 8:00 PM<br>Saturday: 10:00 AM - 6:00 PM<br>Sunday: Closed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Culinary Arts Academy. All rights reserved.</p>
+        <p>Follow us on social media for recipes, tips, and class updates!</p>
+    </footer>
+</body>
+</html>
