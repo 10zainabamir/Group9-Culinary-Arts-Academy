@@ -1,0 +1,7 @@
+D:\Csharp\appnew\appnew\obj\Debug\appnew.csproj.AssemblyReference.cache
+D:\Csharp\appnew\appnew\obj\Debug\appnew.csproj.CoreCompileInputs.cache
+D:\Csharp\appnew\appnew\bin\Debug\appnew.exe.config
+D:\Csharp\appnew\appnew\bin\Debug\appnew.exe
+D:\Csharp\appnew\appnew\bin\Debug\appnew.pdb
+D:\Csharp\appnew\appnew\obj\Debug\appnew.exe
+D:\Csharp\appnew\appnew\obj\Debug\appnew.pdb
